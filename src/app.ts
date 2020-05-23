@@ -49,6 +49,25 @@ export default class HelloWorld {
                     }}
                 }
             });
+		     // Code to run when a user joins.
+        console.log(`User joined: ${user.name}`);
+        console.log(user);
+        if (user.name === "Diatonic"){
+            Actor.CreateFromLibrary(this.context, {
+                resourceId: "artifact: 1472538491718992799",
+                actor: {
+                    name: 'Retro',
+                    attachment: {
+                        userId: user.id,
+                        attachPoint: 'spine-middle'
+                    },
+                    transform: {local: {
+                        position: { x: 0, y: 0, z: 0},
+                        scale: { x: 1, y: 1, z: 1},
+                       
+                    }}
+                }
+            });
     }
 }
 }
