@@ -77,6 +77,7 @@ export default class HelloWorld {
             resourceId: "artifact: 1314062242190197175",
 			actor: {
                 name: 'Mirror',
+		grabbable: true,
                 exclusiveToUser: user.id,
                 attachment: {
                     userId: user.id,
