@@ -30,26 +30,7 @@ export default class HelloWorld {
 	private attachedItems: {[id: string]: Actor} = {};
 
     private userJoined(user: User) {
-        // Code to run when a user joins.
-        console.log(`User joined: ${user.name}`);
-        console.log(user);
-        if (user.name === "Diatonic"){
-            Actor.CreateFromLibrary(this.context, {
-                resourceId: "artifact: 1478474207850397878",
-                actor: {
-                    name: 'Retro',
-                    attachment: {
-                        userId: user.id,
-                        attachPoint: 'head'
-                    },
-                    transform: {local: {
-                        position: { x: 0.00012, y: -1.665, z: -0.012 },
-                        scale: { x: 1, y: 1, z: 1},
-                       
-                    }}
-                }
-            });
-		     // Code to run when a user joins.
+ // Code to run when a user joins.
         console.log(`User joined: ${user.name}`);
         console.log(user);
         if (user.name === "Diatonic"){
@@ -87,8 +68,54 @@ export default class HelloWorld {
                     }}
                 }
             });
+
+            // Create cube.
+            console.log(`User joined: ${user.name}`);
+            console.log(user);
+            if (user.name === "Diatonic"){
+                const mirror =   Actor.CreateFromLibrary(this.context, {
+            resourceId: "artifact: 1314062242190197175",
+			actor: {
+                name: 'Mirror',
+                exclusiveToUser: user.id,
+                attachment: {
+                    userId: user.id,
+                    attachPoint: 'hips'
+                },
+				transform: {local: {
+					position: { x: 0, y: -0.3, z: 1 },
+					scale: { x: 0.5, y: 0.5, z: 0.5}
+				}}
+			}
+		});
+
+		// Create button behavior for cube.
+		mirror.setBehavior(ButtonBehavior).onButton("pressed", (user: User) => {
+			if (!this.attachedItems[user.id]) {
+      // If item for user does not exist, create it and add to list.
+				this.attachedItems[user.id] = Actor.CreateFromLibrary(this.context, {
+                resourceId: "artifact: 1478474207850397878",
+                actor: {
+                    name: 'Retro',
+                    attachment: {
+                        userId: user.id,
+                        attachPoint: 'head'
+                    },
+                    transform: {local: {
+                        position: { x: 0.00012, y: -1.665, z: -0.012 },
+                        scale: { x: 1, y: 1, z: 1},
+                       
+                    }}
+                }
+            });
+        } else {
+            // If item already exists, destroy it and delete from list.
+            this.attachedItems[user.id].destroy();
+            delete this.attachedItems[user.id];
+        }
+    });
+        }
     }
-}
-}
+        }
     }
 }
