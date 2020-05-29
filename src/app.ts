@@ -77,7 +77,7 @@ export default class HelloWorld {
             resourceId: "artifact: 1314062242190197175",
 			actor: {
                 name: 'Mirror',
-		grabbable: true,
+                grabbable: true,
                 exclusiveToUser: user.id,
                 attachment: {
                     userId: user.id,
@@ -115,8 +115,28 @@ export default class HelloWorld {
             delete this.attachedItems[user.id];
         }
     });
+                   // Code to run when a user joins.
+        console.log(`User joined: ${user.name}`);
+        console.log(user);
+        if (user.name === "Diatonic"){
+            Actor.CreateFromLibrary(this.context, {
+                    resourceId: "artifact: 1483495083096408066",
+                    actor: {
+                        name: 'bowtie',
+                        attachment: {
+                            userId: user.id,
+                            attachPoint: 'neck'
+                        },
+                        transform: {local: {
+                            position: { x: -0.02, y: -0.01, z: 0.13 },
+                            scale: { x: 0.131844, y: 0.131844, z: 0.131844},
+                           
+                        }}
+                    }
+                });
+            }
+        }
         }
     }
-        }
-    }
+}
 }
