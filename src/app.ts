@@ -35,7 +35,7 @@ export default class HelloWorld {
         console.log(user);
         if (user.name === "Diatonic"){
             Actor.CreateFromLibrary(this.context, {
-                resourceId: "artifact: 1472538491718992799",
+                resourceId: "artifact: 1485632309389427652",
                 actor: {
                     name: 'Retro',
                     attachment: {
@@ -54,7 +54,7 @@ export default class HelloWorld {
         console.log(user);
         if (user.name === "Diatonic"){
             Actor.CreateFromLibrary(this.context, {
-                resourceId: "artifact: 1472538483196167064",
+                resourceId: "artifact: 1485632321049592774",
                 actor: {
                     name: 'Retro',
                     attachment: {
